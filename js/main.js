@@ -13,6 +13,7 @@ window.onload = (event) => {
 };
 
 function startFunc() {
+	moveCount = 0;
 	boardSize = dificultySelector.value;
 	createStart();
 	const frag = new DocumentFragment();
