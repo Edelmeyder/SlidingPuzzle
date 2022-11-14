@@ -4,6 +4,9 @@ let start = [];
 let moveCount = 0;
 
 const dificultySelector = document.getElementById("dif");
+if (document.cookie.includes("dificulty")) {
+	dificultySelector.value = document.cookie.charAt(document.cookie.indexOf("dificulty") + 10);
+}
 const startBtn = document.getElementById("startBtn");
 const board = document.getElementById("board");
 startBtn.onclick = startFunc;
@@ -15,6 +18,7 @@ window.onload = (event) => {
 function startFunc() {
 	moveCount = 0;
 	boardSize = dificultySelector.value;
+	document.cookie = "dificulty=" + boardSize;
 	createStart();
 	const frag = new DocumentFragment();
 	for (let i = 0; i < boardSize; i++) {
@@ -76,9 +80,9 @@ function press() {
 			}
 		}
 	} else if (this.className !== "empty") {
-		this.className += " nop";
+		this.classList.add("nop");
 		setTimeout(() => {
-			this.className = "tile";
+			this.classList.remove("nop");
 		}, 1000);
 	}
 }
