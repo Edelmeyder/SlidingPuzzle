@@ -18,7 +18,9 @@ window.onload = (event) => {
 function startFunc() {
 	moveCount = 0;
 	boardSize = dificultySelector.value;
-	document.cookie = "dificulty=" + boardSize;
+	let d = new Date();
+	d.setDate(d.getDate() + (365 * 60 * 60 * 24 * 1000));
+	document.cookie = "dificulty=" + boardSize + ";expires=" + d.toUTCString();
 	createStart();
 	const frag = new DocumentFragment();
 	for (let i = 0; i < boardSize; i++) {
